@@ -156,6 +156,34 @@ dotnet run --project src/CPA_DashBoard.Web
 dotnet publish src/CPA_DashBoard.Web -c Release -o publish
 ```
 
+## GitHub Actions 构建
+
+仓库内置了跨平台构建工作流：`.github/workflows/build-binaries.yml:1`
+
+### 产物说明
+
+每次手动触发或推送 `v*` 标签后，Actions 会生成以下 ZIP 包：
+
+- `CPA_DashBoard_DotNet-win-x64-framework-dependent.zip`
+- `CPA_DashBoard_DotNet-win-x64-self-contained.zip`
+- `CPA_DashBoard_DotNet-linux-x64-framework-dependent.zip`
+- `CPA_DashBoard_DotNet-linux-x64-self-contained.zip`
+- `CPA_DashBoard_DotNet-osx-x64-framework-dependent.zip`
+- `CPA_DashBoard_DotNet-osx-x64-self-contained.zip`
+
+### 触发方式
+
+1. 打开 GitHub 仓库的 `Actions`
+2. 选择 `Build Binaries`
+3. 点击 `Run workflow`
+4. 构建完成后在对应运行记录的 `Artifacts` 中下载 ZIP 包
+
+说明：
+
+- `framework-dependent` 版本需要目标机器预装 .NET 10 Runtime
+- `self-contained` 版本自带运行时，体积更大，但可直接运行
+- 当前工作流会额外检出 `dongshuyan/CPA-Dashboard`，用于复用 Python 版本的前端模板文件
+
 ### 已验证
 
 ```bash

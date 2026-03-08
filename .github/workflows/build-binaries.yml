@@ -1,0 +1,129 @@
+name: Build Binaries
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_VERSION: 10.0.x
+  BUILD_CONFIGURATION: Release
+  SOLUTION_PATH: CPA_DashBoard_DotNet.sln
+  PROJECT_PATH: src/CPA_DashBoard.Web/CPA_DashBoard.Web.csproj
+  APP_NAME: CPA_DashBoard_DotNet
+  PYTHON_FRONTEND_REPO: dongshuyan/CPA-Dashboard
+
+jobs:
+  publish:
+    name: ${{ matrix.display_name }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - display_name: Windows x64
+            runner: windows-latest
+            rid: win-x64
+          - display_name: Linux x64
+            runner: ubuntu-latest
+            rid: linux-x64
+          - display_name: macOS x64
+            runner: macos-13
+            rid: osx-x64
+
+    steps:
+      - name: Checkout .NET repository
+        uses: actions/checkout@v4
+        with:
+          path: CPA_DashBoard_DotNet
+
+      - name: Checkout Python frontend dependency
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.PYTHON_FRONTEND_REPO }}
+          path: CPA_DashBoard_Python
+          fetch-depth: 1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore
+        working-directory: ${{ github.workspace }}/CPA_DashBoard_DotNet
+        run: dotnet restore ${{ env.SOLUTION_PATH }}
+
+      - name: Publish framework-dependent build
+        shell: pwsh
+        working-directory: ${{ github.workspace }}/CPA_DashBoard_DotNet
+        run: |
+          $output = Join-Path $env:GITHUB_WORKSPACE "artifacts/publish/${{ matrix.rid }}/framework-dependent"
+          dotnet publish $env:PROJECT_PATH -c $env:BUILD_CONFIGURATION -r ${{ matrix.rid }} --self-contained false -p:UseAppHost=true -o $output
+
+      - name: Publish self-contained build
+        shell: pwsh
+        working-directory: ${{ github.workspace }}/CPA_DashBoard_DotNet
+        run: |
+          $output = Join-Path $env:GITHUB_WORKSPACE "artifacts/publish/${{ matrix.rid }}/self-contained"
+          dotnet publish $env:PROJECT_PATH -c $env:BUILD_CONFIGURATION -r ${{ matrix.rid }} --self-contained true -p:UseAppHost=true -o $output
+
+      - name: Create zip packages
+        shell: python
+        env:
+          RID: ${{ matrix.rid }}
+          ARTIFACT_ROOT: ${{ github.workspace }}/artifacts
+        run: |
+          import os
+          import shutil
+          import zipfile
+          from pathlib import Path
+
+          artifact_root = Path(os.environ["ARTIFACT_ROOT"])
+          publish_root = artifact_root / "publish" / os.environ["RID"]
+          staging_root = artifact_root / "staging"
+          packages_root = artifact_root / "packages"
+          app_name = os.environ.get("APP_NAME", "CPA_DashBoard_DotNet")
+
+          staging_root.mkdir(parents=True, exist_ok=True)
+          packages_root.mkdir(parents=True, exist_ok=True)
+
+          def build_zip(variant: str) -> None:
+              source = publish_root / variant
+              package_name = f"{app_name}-{os.environ['RID']}-{variant}"
+              staging_dir = staging_root / package_name
+              zip_path = packages_root / f"{package_name}.zip"
+
+              if staging_dir.exists():
+                  shutil.rmtree(staging_dir)
+              shutil.copytree(source, staging_dir)
+
+              if zip_path.exists():
+                  zip_path.unlink()
+
+              with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+                  for path in sorted(staging_dir.rglob("*")):
+                      relative_path = path.relative_to(staging_root).as_posix()
+                      zip_info = zipfile.ZipInfo.from_file(path, arcname=relative_path)
+                      zip_info.compress_type = zipfile.ZIP_DEFLATED
+
+                      if path.is_dir():
+                          archive.writestr(zip_info, b"")
+                          continue
+
+                      with path.open("rb") as source_file, archive.open(zip_info, "w") as target_file:
+                          shutil.copyfileobj(source_file, target_file)
+
+          build_zip("framework-dependent")
+          build_zip("self-contained")
+
+      - name: Upload zip artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APP_NAME }}-${{ matrix.rid }}
+          path: ${{ github.workspace }}/artifacts/packages/*.zip
+          if-no-files-found: error
+          retention-days: 30
