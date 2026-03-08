@@ -166,10 +166,16 @@ dotnet publish src/CPA_DashBoard.Web -c Release -o publish
 
 - `CPA_DashBoard_DotNet-win-x64-framework-dependent.zip`
 - `CPA_DashBoard_DotNet-win-x64-self-contained.zip`
+- `CPA_DashBoard_DotNet-win-arm64-framework-dependent.zip`
+- `CPA_DashBoard_DotNet-win-arm64-self-contained.zip`
 - `CPA_DashBoard_DotNet-linux-x64-framework-dependent.zip`
 - `CPA_DashBoard_DotNet-linux-x64-self-contained.zip`
+- `CPA_DashBoard_DotNet-linux-arm64-framework-dependent.zip`
+- `CPA_DashBoard_DotNet-linux-arm64-self-contained.zip`
 - `CPA_DashBoard_DotNet-osx-x64-framework-dependent.zip`
 - `CPA_DashBoard_DotNet-osx-x64-self-contained.zip`
+- `CPA_DashBoard_DotNet-osx-arm64-framework-dependent.zip`
+- `CPA_DashBoard_DotNet-osx-arm64-self-contained.zip`
 
 ### 触发方式
 

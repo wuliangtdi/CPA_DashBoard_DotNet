@@ -28,12 +28,21 @@ jobs:
           - display_name: Windows x64
             runner: windows-latest
             rid: win-x64
+          - display_name: Windows ARM64
+            runner: windows-latest
+            rid: win-arm64
           - display_name: Linux x64
             runner: ubuntu-latest
             rid: linux-x64
+          - display_name: Linux ARM64
+            runner: ubuntu-latest
+            rid: linux-arm64
           - display_name: macOS x64
             runner: macos-13
             rid: osx-x64
+          - display_name: macOS ARM64
+            runner: macos-14
+            rid: osx-arm64
 
     steps:
       - name: Checkout .NET repository
