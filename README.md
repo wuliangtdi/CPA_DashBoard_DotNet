@@ -179,16 +179,33 @@ dotnet publish src/CPA_DashBoard.Web -c Release -o publish
 
 ### 触发方式
 
+#### 方式一：手动触发
+
 1. 打开 GitHub 仓库的 `Actions`
 2. 选择 `Build Binaries`
 3. 点击 `Run workflow`
-4. 构建完成后在对应运行记录的 `Artifacts` 中下载 ZIP 包
+4. 如果只想生成 Actions 产物，`release_tag` 留空即可
+5. 如果想同时发布到 GitHub Release，在 `release_tag` 中填写例如 `v1.0.0`
+
+#### 方式二：推送版本标签
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+推送 `v*` 标签后，工作流会自动：
+
+- 构建 6 个平台的 12 个 ZIP 包
+- 上传到当前 Action 运行记录的 `Artifacts`
+- 创建或更新对应的 GitHub Release，并把 ZIP 包作为 Release 资产上传
 
 说明：
 
 - `framework-dependent` 版本需要目标机器预装 .NET 10 Runtime
 - `self-contained` 版本自带运行时，体积更大，但可直接运行
 - 当前工作流会额外检出 `dongshuyan/CPA-Dashboard`，用于复用 Python 版本的前端模板文件
+- 手动触发时，只有填写了 `release_tag` 才会发布到 GitHub Release
 
 ### 已验证
 
