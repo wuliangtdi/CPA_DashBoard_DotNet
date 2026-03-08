@@ -1,0 +1,475 @@
+{
+  "SUPPORTED_QUOTA_PROVIDERS": [
+    "antigravity"
+  ],
+  "TOKEN_VALIDATION_PROVIDERS": [
+    "gemini",
+    "codex",
+    "claude",
+    "qwen",
+    "iflow"
+  ],
+  "NO_TOKEN_VALIDATION_PROVIDERS": [
+    "aistudio",
+    "vertex"
+  ],
+  "ANTIGRAVITY_MODEL_NAME_TO_ALIAS": {
+    "rev19-uic3-1p": "gemini-2.5-computer-use-preview-10-2025",
+    "gemini-3-pro-image": "gemini-3-pro-image-preview",
+    "gemini-3-pro-high": "gemini-3-pro-preview",
+    "gemini-3-flash": "gemini-3-flash-preview",
+    "claude-sonnet-4-5": "gemini-claude-sonnet-4-5",
+    "claude-sonnet-4-5-thinking": "gemini-claude-sonnet-4-5-thinking",
+    "claude-opus-4-5-thinking": "gemini-claude-opus-4-5-thinking"
+  },
+  "ANTIGRAVITY_SKIP_MODELS": [
+    "chat_20706",
+    "chat_23310",
+    "gemini-2.5-flash-thinking",
+    "gemini-2.5-pro",
+    "gemini-3-pro-low"
+  ],
+  "STATIC_MODELS_PROVIDERS": [
+    "gemini",
+    "codex",
+    "claude",
+    "qwen",
+    "iflow",
+    "aistudio",
+    "vertex",
+    "kimi"
+  ],
+  "STATIC_MODEL_LISTS": {
+    "gemini": [
+      {
+        "name": "gemini-2.5-pro",
+        "display_name": "Gemini 2.5 Pro",
+        "description": "Stable release (June 17th, 2025) of Gemini 2.5 Pro"
+      },
+      {
+        "name": "gemini-2.5-flash",
+        "display_name": "Gemini 2.5 Flash",
+        "description": "Stable version of Gemini 2.5 Flash, up to 1M tokens"
+      },
+      {
+        "name": "gemini-2.5-flash-lite",
+        "display_name": "Gemini 2.5 Flash Lite",
+        "description": "Our smallest and most cost effective model"
+      },
+      {
+        "name": "gemini-3-pro-preview",
+        "display_name": "Gemini 3 Pro Preview",
+        "description": "Our most intelligent model with SOTA reasoning"
+      },
+      {
+        "name": "gemini-3.1-pro-preview",
+        "display_name": "Gemini 3.1 Pro Preview",
+        "description": "Gemini 3.1 Pro Preview"
+      },
+      {
+        "name": "gemini-3-flash-preview",
+        "display_name": "Gemini 3 Flash Preview",
+        "description": "Our most intelligent model built for speed"
+      }
+    ],
+    "codex": [
+      {
+        "name": "gpt-5",
+        "display_name": "GPT 5",
+        "description": "Stable version of GPT 5"
+      },
+      {
+        "name": "gpt-5-codex",
+        "display_name": "GPT 5 Codex",
+        "description": "Stable version of GPT 5 Codex"
+      },
+      {
+        "name": "gpt-5-codex-mini",
+        "display_name": "GPT 5 Codex Mini",
+        "description": "Cheaper, faster, but less capable version"
+      },
+      {
+        "name": "gpt-5.1",
+        "display_name": "GPT 5.1",
+        "description": "Stable version of GPT 5.1"
+      },
+      {
+        "name": "gpt-5.1-codex",
+        "display_name": "GPT 5.1 Codex",
+        "description": "Stable version of GPT 5.1 Codex"
+      },
+      {
+        "name": "gpt-5.1-codex-mini",
+        "display_name": "GPT 5.1 Codex Mini",
+        "description": "Cheaper, faster, but less capable version"
+      },
+      {
+        "name": "gpt-5.1-codex-max",
+        "display_name": "GPT 5.1 Codex Max",
+        "description": "Stable version of GPT 5.1 Codex Max"
+      },
+      {
+        "name": "gpt-5.2",
+        "display_name": "GPT 5.2",
+        "description": "Stable version of GPT 5.2"
+      },
+      {
+        "name": "gpt-5.2-codex",
+        "display_name": "GPT 5.2 Codex",
+        "description": "Stable version of GPT 5.2 Codex"
+      },
+      {
+        "name": "gpt-5.3-codex",
+        "display_name": "GPT 5.3 Codex",
+        "description": "Stable version of GPT 5.3 Codex, The best model for coding and agentic tasks across domains."
+      },
+      {
+        "name": "gpt-5.3-codex-spark",
+        "display_name": "GPT 5.3 Codex Spark",
+        "description": "Ultra-fast coding model."
+      },
+      {
+        "name": "gpt-5.4",
+        "display_name": "GPT 5.4",
+        "description": "Stable version of GPT 5.4"
+      }
+    ],
+    "claude": [
+      {
+        "name": "claude-haiku-4-5-20251001",
+        "display_name": "Claude 4.5 Haiku",
+        "description": "Fast and efficient model"
+      },
+      {
+        "name": "claude-sonnet-4-5-20250929",
+        "display_name": "Claude 4.5 Sonnet",
+        "description": "Balanced performance model"
+      },
+      {
+        "name": "claude-sonnet-4-6",
+        "display_name": "Claude 4.6 Sonnet",
+        "description": "Claude 4.6 Sonnet"
+      },
+      {
+        "name": "claude-opus-4-6",
+        "display_name": "Claude 4.6 Opus",
+        "description": "Premium model combining maximum intelligence with practical performance"
+      },
+      {
+        "name": "claude-opus-4-5-20251101",
+        "display_name": "Claude 4.5 Opus",
+        "description": "Premium model combining maximum intelligence"
+      },
+      {
+        "name": "claude-opus-4-1-20250805",
+        "display_name": "Claude 4.1 Opus",
+        "description": "Claude 4.1 Opus"
+      },
+      {
+        "name": "claude-opus-4-20250514",
+        "display_name": "Claude 4 Opus",
+        "description": "Claude 4 Opus"
+      },
+      {
+        "name": "claude-sonnet-4-20250514",
+        "display_name": "Claude 4 Sonnet",
+        "description": "Claude 4 Sonnet"
+      },
+      {
+        "name": "claude-3-7-sonnet-20250219",
+        "display_name": "Claude 3.7 Sonnet",
+        "description": "Claude 3.7 Sonnet"
+      },
+      {
+        "name": "claude-3-5-haiku-20241022",
+        "display_name": "Claude 3.5 Haiku",
+        "description": "Claude 3.5 Haiku"
+      }
+    ],
+    "qwen": [
+      {
+        "name": "qwen3-coder-plus",
+        "display_name": "Qwen3 Coder Plus",
+        "description": "Advanced code generation and understanding model"
+      },
+      {
+        "name": "qwen3-coder-flash",
+        "display_name": "Qwen3 Coder Flash",
+        "description": "Fast code generation model"
+      },
+      {
+        "name": "vision-model",
+        "display_name": "Qwen3 Vision Model",
+        "description": "Vision model"
+      },
+      {
+        "name": "coder-model",
+        "display_name": "Qwen 3.5 Plus",
+        "description": "efficient hybrid model with leading coding performance"
+      }
+    ],
+    "iflow": [
+      {
+        "name": "tstars2.0",
+        "display_name": "TStars-2.0",
+        "description": "iFlow TStars-2.0 multimodal assistant"
+      },
+      {
+        "name": "qwen3-coder-plus",
+        "display_name": "Qwen3-Coder-Plus",
+        "description": "Qwen3 Coder Plus code generation"
+      },
+      {
+        "name": "qwen3-max",
+        "display_name": "Qwen3-Max",
+        "description": "Qwen3 flagship model"
+      },
+      {
+        "name": "qwen3-vl-plus",
+        "display_name": "Qwen3-VL-Plus",
+        "description": "Qwen3 multimodal vision-language"
+      },
+      {
+        "name": "qwen3-max-preview",
+        "display_name": "Qwen3-Max-Preview",
+        "description": "Qwen3 Max preview build"
+      },
+      {
+        "name": "kimi-k2-0905",
+        "display_name": "Kimi-K2-Instruct-0905",
+        "description": "Moonshot Kimi K2 instruct 0905"
+      },
+      {
+        "name": "glm-4.6",
+        "display_name": "GLM-4.6",
+        "description": "Zhipu GLM 4.6 general model"
+      },
+      {
+        "name": "glm-4.7",
+        "display_name": "GLM-4.7",
+        "description": "Zhipu GLM 4.7 general model"
+      },
+      {
+        "name": "kimi-k2",
+        "display_name": "Kimi-K2",
+        "description": "Moonshot Kimi K2 general model"
+      },
+      {
+        "name": "kimi-k2-thinking",
+        "display_name": "Kimi-K2-Thinking",
+        "description": "Moonshot Kimi K2 thinking model"
+      },
+      {
+        "name": "deepseek-v3.2-chat",
+        "display_name": "DeepSeek-V3.2-Chat",
+        "description": "DeepSeek V3.2 Chat"
+      },
+      {
+        "name": "deepseek-v3.2-reasoner",
+        "display_name": "DeepSeek-V3.2-Reasoner",
+        "description": "DeepSeek V3.2 Reasoner"
+      },
+      {
+        "name": "deepseek-v3.2",
+        "display_name": "DeepSeek-V3.2-Exp",
+        "description": "DeepSeek V3.2 experimental"
+      },
+      {
+        "name": "deepseek-v3.1",
+        "display_name": "DeepSeek-V3.1-Terminus",
+        "description": "DeepSeek V3.1 Terminus"
+      },
+      {
+        "name": "deepseek-r1",
+        "display_name": "DeepSeek-R1",
+        "description": "DeepSeek reasoning model R1"
+      },
+      {
+        "name": "deepseek-v3",
+        "display_name": "DeepSeek-V3-671B",
+        "description": "DeepSeek V3 671B"
+      },
+      {
+        "name": "qwen3-32b",
+        "display_name": "Qwen3-32B",
+        "description": "Qwen3 32B"
+      },
+      {
+        "name": "qwen3-235b-a22b-thinking-2507",
+        "display_name": "Qwen3-235B-A22B-Thinking",
+        "description": "Qwen3 235B A22B Thinking (2507)"
+      },
+      {
+        "name": "qwen3-235b-a22b-instruct",
+        "display_name": "Qwen3-235B-A22B-Instruct",
+        "description": "Qwen3 235B A22B Instruct"
+      },
+      {
+        "name": "qwen3-235b",
+        "display_name": "Qwen3-235B-A22B",
+        "description": "Qwen3 235B A22B"
+      },
+      {
+        "name": "minimax-m2",
+        "display_name": "MiniMax-M2",
+        "description": "MiniMax M2"
+      },
+      {
+        "name": "minimax-m2.1",
+        "display_name": "MiniMax-M2.1",
+        "description": "MiniMax M2.1"
+      },
+      {
+        "name": "glm-5",
+        "display_name": "GLM-5",
+        "description": "Zhipu GLM 5 general model"
+      },
+      {
+        "name": "minimax-m2.5",
+        "display_name": "MiniMax-M2.5",
+        "description": "MiniMax M2.5"
+      },
+      {
+        "name": "iflow-rome-30ba3b",
+        "display_name": "iFlow-ROME",
+        "description": "iFlow Rome 30BA3B model"
+      },
+      {
+        "name": "kimi-k2.5",
+        "display_name": "Kimi-K2.5",
+        "description": "Moonshot Kimi K2.5"
+      }
+    ],
+    "aistudio": [
+      {
+        "name": "gemini-2.5-pro",
+        "display_name": "Gemini 2.5 Pro",
+        "description": "Stable release (June 17th, 2025) of Gemini 2.5 Pro"
+      },
+      {
+        "name": "gemini-2.5-flash",
+        "display_name": "Gemini 2.5 Flash",
+        "description": "Stable version of Gemini 2.5 Flash"
+      },
+      {
+        "name": "gemini-2.5-flash-lite",
+        "display_name": "Gemini 2.5 Flash Lite",
+        "description": "Our smallest and most cost effective model"
+      },
+      {
+        "name": "gemini-3-pro-preview",
+        "display_name": "Gemini 3 Pro Preview",
+        "description": "Gemini 3 Pro Preview"
+      },
+      {
+        "name": "gemini-3.1-pro-preview",
+        "display_name": "Gemini 3.1 Pro Preview",
+        "description": "Gemini 3.1 Pro Preview"
+      },
+      {
+        "name": "gemini-3-flash-preview",
+        "display_name": "Gemini 3 Flash Preview",
+        "description": "Our most intelligent model built for speed"
+      },
+      {
+        "name": "gemini-pro-latest",
+        "display_name": "Gemini Pro Latest",
+        "description": "Latest release of Gemini Pro"
+      },
+      {
+        "name": "gemini-flash-latest",
+        "display_name": "Gemini Flash Latest",
+        "description": "Latest release of Gemini Flash"
+      },
+      {
+        "name": "gemini-flash-lite-latest",
+        "display_name": "Gemini Flash-Lite Latest",
+        "description": "Latest release of Gemini Flash-Lite"
+      },
+      {
+        "name": "gemini-2.5-flash-image",
+        "display_name": "Gemini 2.5 Flash Image",
+        "description": "State-of-the-art image generation and editing model"
+      }
+    ],
+    "vertex": [
+      {
+        "name": "gemini-2.5-pro",
+        "display_name": "Gemini 2.5 Pro",
+        "description": "Stable release (June 17th, 2025) of Gemini 2.5 Pro"
+      },
+      {
+        "name": "gemini-2.5-flash",
+        "display_name": "Gemini 2.5 Flash",
+        "description": "Stable version of Gemini 2.5 Flash"
+      },
+      {
+        "name": "gemini-2.5-flash-lite",
+        "display_name": "Gemini 2.5 Flash Lite",
+        "description": "Our smallest and most cost effective model"
+      },
+      {
+        "name": "gemini-3-pro-preview",
+        "display_name": "Gemini 3 Pro Preview",
+        "description": "Gemini 3 Pro Preview"
+      },
+      {
+        "name": "gemini-3.1-pro-preview",
+        "display_name": "Gemini 3.1 Pro Preview",
+        "description": "Gemini 3.1 Pro Preview"
+      },
+      {
+        "name": "gemini-3-flash-preview",
+        "display_name": "Gemini 3 Flash Preview",
+        "description": "Our most intelligent model built for speed"
+      },
+      {
+        "name": "gemini-3-pro-image-preview",
+        "display_name": "Gemini 3 Pro Image Preview",
+        "description": "Gemini 3 Pro Image Preview"
+      },
+      {
+        "name": "imagen-4.0-generate-001",
+        "display_name": "Imagen 4.0 Generate",
+        "description": "Imagen 4.0 image generation model"
+      },
+      {
+        "name": "imagen-4.0-ultra-generate-001",
+        "display_name": "Imagen 4.0 Ultra Generate",
+        "description": "Imagen 4.0 Ultra high-quality image generation model"
+      },
+      {
+        "name": "imagen-3.0-generate-002",
+        "display_name": "Imagen 3.0 Generate",
+        "description": "Imagen 3.0 image generation model"
+      },
+      {
+        "name": "imagen-3.0-fast-generate-001",
+        "display_name": "Imagen 3.0 Fast Generate",
+        "description": "Imagen 3.0 fast image generation model"
+      },
+      {
+        "name": "imagen-4.0-fast-generate-001",
+        "display_name": "Imagen 4.0 Fast Generate",
+        "description": "Imagen 4.0 fast image generation model"
+      }
+    ],
+    "kimi": [
+      {
+        "name": "kimi-k2",
+        "display_name": "Kimi K2",
+        "description": "Kimi K2 - Moonshot AI's flagship coding model"
+      },
+      {
+        "name": "kimi-k2-thinking",
+        "display_name": "Kimi K2 Thinking",
+        "description": "Kimi K2 Thinking - Extended reasoning model"
+      },
+      {
+        "name": "kimi-k2.5",
+        "display_name": "Kimi K2.5",
+        "description": "Kimi K2.5 - Latest Moonshot AI coding model with improved capabilities"
+      }
+    ]
+  }
+}
