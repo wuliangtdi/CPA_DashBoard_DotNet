@@ -43,7 +43,7 @@ jobs:
             runner: ubuntu-latest
             rid: linux-arm64
           - display_name: macOS x64
-            runner: macos-13
+            runner: macos-14
             rid: osx-x64
           - display_name: macOS ARM64
             runner: macos-14

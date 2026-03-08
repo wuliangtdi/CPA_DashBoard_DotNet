@@ -205,6 +205,7 @@ git push origin v1.0.0
 - `framework-dependent` 版本需要目标机器预装 .NET 10 Runtime
 - `self-contained` 版本自带运行时，体积更大，但可直接运行
 - 当前工作流会额外检出 `dongshuyan/CPA-Dashboard`，用于复用 Python 版本的前端模板文件
+- `osx-x64` 产物使用 `macos-14` runner 交叉发布，避免部分仓库无法使用 Intel macOS runner 的问题
 - 手动触发时，只有填写了 `release_tag` 才会发布到 GitHub Release
 
 ### 已验证
